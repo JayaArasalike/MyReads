@@ -13,10 +13,14 @@ class SearchBook extends Component {
 
    	bookSearch = (query) => {
    		const maxResults = 10;
-   		BooksAPI.search(query, maxResults).then((res) => {
-      		console.log(" search query response = ", res);
-      		this.setState({ showingBooks : res })
-    	})
+   		if(query) {
+	   		BooksAPI.search(query, maxResults).then((res) => {
+	      		console.log(" search query response = ", res);
+	      		this.setState({ showingBooks : res })
+	    	})
+   		} else {
+   			this.setState({ showingBooks:[] })
+   		}
    	}
 
    	changeHandler = (shelfName, bookId) => {
@@ -28,7 +32,7 @@ class SearchBook extends Component {
         return(
           <div className="search-books">
             <div className="search-books-bar">
-              <a className="close-search" >Close</a>
+              <Link className="close-search" to="/">Close</Link>
               <div className="search-books-input-wrapper">
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -44,37 +48,40 @@ class SearchBook extends Component {
             </div>
             <div className="search-books-results">
               	<ol className="books-grid">
-              	{ this.state.showingBooks.map( (book) => (
-                    <li key={book.id} >
-                        <div className="book">
-                          	<div className="book-top">
-	                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
-	                            <div className="book-shelf-changer">
-				              		{(() => {
-				              			if (this.props.currentlyReading.some(cr => cr.id === book.id)) {
-				              				shelfName = "currentlyReading"
-				              			} else if (this.props.read.some(r => r.id === book.id)) {
-				              				shelfName = "read"
-				              			} else if (this.props.wantToRead.some(wr => wr.id === book.id)) {
-				              				shelfName = "wantToRead"
-				              			} else {
-				              				shelfName = "none"
-				              			}
-				              		})()}	                            
-	                              <select value ={shelfName} onChange = {(event) => this.changeHandler(event.target.value, book.id)} >
-	                                <option value="none" disabled>Move to...</option>
-	                                <option value="currentlyReading" >Currently Reading</option>
-	                                <option value="wantToRead" >Want to Read</option>
-	                                <option value="read" >Read</option>
-	                                <option value="none">None</option>
-	                              </select>
-	                            </div>
-                          	</div>
-                          	<div className="book-title">{book.title}</div>
-                          	<div className="book-authors">{book.authors}</div>
-                        </div>
-                     </li>
-                ))}
+              	{
+              		(this.state.showingBooks) ? (
+	              		this.state.showingBooks.map( (book) => (
+		                    <li key={book.id} >
+		                        <div className="book">
+		                          	<div className="book-top">
+			                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+			                            <div className="book-shelf-changer">
+						              		{(() => {
+						              			if (this.props.currentlyReading.some(cr => cr.id === book.id)) {
+						              				shelfName = "currentlyReading"
+						              			} else if (this.props.read.some(r => r.id === book.id)) {
+						              				shelfName = "read"
+						              			} else if (this.props.wantToRead.some(wr => wr.id === book.id)) {
+						              				shelfName = "wantToRead"
+						              			} else {
+						              				shelfName = "none"
+						              			}
+						              		})()}	                            
+			                              <select value ={shelfName} onChange = {(event) => this.changeHandler(event.target.value, book.id)} >
+			                                <option value="disabled" disabled>Move to...</option>
+			                                <option value="currentlyReading" >Currently Reading</option>
+			                                <option value="wantToRead" >Want to Read</option>
+			                                <option value="read" >Read</option>
+			                                <option value="none">None</option>
+			                              </select>
+			                            </div>
+		                          	</div>
+		                          	<div className="book-title">{book.title}</div>
+		                          	<div className="book-authors">{book.authors}</div>
+		                        </div>
+		                    </li>
+              		
+                ))) : ""}
               	</ol>
             </div>
           </div>

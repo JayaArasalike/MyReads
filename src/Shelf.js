@@ -6,12 +6,6 @@ import escapeRegExp from 'escape-string-regexp';
 import './App.css'
 
 class Shelf extends Component {
-	static propTypes = {
-	cr: PropTypes.array.isRequired,
-	r: PropTypes.array.isRequired,
-	wr: PropTypes.array.isRequired
-	
-	}
 
 	state = {
 		query: '',
@@ -20,16 +14,15 @@ class Shelf extends Component {
 
 	
 	changeHandler = (shelfName, bookId) => {
-        console.log(`bookId: ${bookId} shelfname: ${shelfName}`)
+    console.log(`bookId: ${bookId} shelfname: ${shelfName}`)
 		this.props.handleChange(bookId, shelfName);
 	}
 	
 	render() {
-    
+
 		return(
 			<div>
-
-			<div className="bookshelf">
+			    <div className="bookshelf">
                   <h2 className="bookshelf-title">{this.props.shelfName}</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
@@ -57,8 +50,8 @@ class Shelf extends Component {
                       
                     </ol>
                   </div>
-                </div>
-                </div>
+          </div>
+      </div>
 
 		)
 	}

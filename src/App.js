@@ -80,7 +80,12 @@ class BooksApp extends React.Component {
           </div>
         )} />
       <Route path ='/searchBook' render = {( {history}) => (
-          <SearchBook handleChange={this.handleChange } currentlyReading ={this.state.currentlyReading} read={this.state.read} wantToRead={this.state.wantToRead} />
+          <SearchBook handleChange={this.handleChange}
+                      currentlyReading={this.state.currentlyReading}
+                      read={this.state.read}
+                      wantToRead={this.state.wantToRead}
+            
+          />
 
         )} />
       </div>
