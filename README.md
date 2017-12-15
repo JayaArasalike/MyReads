@@ -17,7 +17,7 @@ As you run the app, the main page displays a list of "shelves" (currently readin
 
 ## Backend Server and BooksAPI
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+To simplify development process, a backend server and BooksAPI.js file was given. The file [`BooksAPI.js`](src/BooksAPI.js) contains the methods that are needed to perform necessary operations on the backend:
 
 * [`getAll`](#getall)
 * [`update`](#update)
