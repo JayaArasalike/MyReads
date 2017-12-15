@@ -30,15 +30,15 @@ class BooksApp extends React.Component {
       books.map(book => {
         if(book.shelf === "currentlyReading") {
           currentlyReading.push(book);
-          console.log("cr is:", currentlyReading);
+          //console.log("cr is:", currentlyReading);
         } 
         else if(book.shelf === "read") {
           read.push(book);
-          console.log("r is:", read);
+          //console.log("r is:", read);
         }
         else {
           wantToRead.push(book);
-          console.log("wr is:", wantToRead);
+          //console.log("wr is:", wantToRead);
         }
         this.setState({ currentlyReading: currentlyReading, read: read, wantToRead: wantToRead})
         //this.setState({ books: books })
@@ -51,9 +51,9 @@ class BooksApp extends React.Component {
   }
 
   handleChange = (bookId, shelfName) => {
-    console.log(`bookId: ${bookId} shelfname: ${shelfName}`)
+    //console.log(`bookId: ${bookId} shelfname: ${shelfName}`)
     BooksAPI.update({id: bookId}, shelfName).then((res) => {
-      console.log("response = ", res);
+      //console.log("response = ", res);
       this.updateShelves();
     })
   }

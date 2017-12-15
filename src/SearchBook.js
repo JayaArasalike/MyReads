@@ -15,7 +15,7 @@ class SearchBook extends Component {
    		const maxResults = 10;
    		if(query) {
 	   		BooksAPI.search(query, maxResults).then((res) => {
-	      		console.log(" search query response = ", res);
+	      		//console.log(" search query response = ", res);
 	      		this.setState({ showingBooks : res })
 	    	})
    		} else {
@@ -24,7 +24,7 @@ class SearchBook extends Component {
    	}
 
    	changeHandler = (shelfName, bookId) => {
-        console.log(`bookId: ${bookId} shelfname: ${shelfName}`)
+        //console.log(`bookId: ${bookId} shelfname: ${shelfName}`)
 		this.props.handleChange(bookId, shelfName);
 	}
     render() {

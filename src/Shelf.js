@@ -14,7 +14,7 @@ class Shelf extends Component {
 
 	
 	changeHandler = (shelfName, bookId) => {
-    console.log(`bookId: ${bookId} shelfname: ${shelfName}`)
+    //console.log(`bookId: ${bookId} shelfname: ${shelfName}`)
 		this.props.handleChange(bookId, shelfName);
 	}
 	
