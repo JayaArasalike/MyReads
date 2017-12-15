@@ -13,6 +13,7 @@ I created SearchBook(to search and add books) and Shelf components (which essent
 
 ## App Functionality
 As you run the app, the main page displays a list of "shelves" (currently reading, read and want to read). Each book has a control that lets you select the shelf for that book. When you select a different shelf, the book moves there. 
+
 When you click on the search button at the bottom right corner, you'll be taken to search page that allows you to find books to add to your library. The search page has a text input that may be used to find books. As the value of the text input changes, the books that match that query are displayed on the page, along with a control that lets you add the book to your library. 
 
 
